@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 export default function AppFunctional(props) {
+
+  // states
+
+
   return (
+
+
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">Coordinates (2, 2)</h3>
