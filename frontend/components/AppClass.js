@@ -1,7 +1,18 @@
 import React from 'react'
+import axios from 'axios'
+
+const initialState = {
+  coordinate: {'x': 2, 'y': 2},
+  steps: 0,
+  email: '',
+  message: '',
+}
 
 export default class AppClass extends React.Component {
+  state = initialState;
+  
   render() {
+    console.log(this.state);
     const { className } = this.props
     return (
       <div id="wrapper" className={className}>
