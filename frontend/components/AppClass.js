@@ -103,15 +103,15 @@ onSubmit = evt => {
           <h3 id="steps">You moved {this.state.steps} {this.state.steps === 1 ? "time" : "times"}</h3>
         </div>
         <div id="grid">
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square active">B</div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
-          <div className="square"></div>
+          <div className={ `${this.state.coordinate.x === 1 && this.state.coordinate.y === 1 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 1 && this.state.coordinate.y === 1 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 2 && this.state.coordinate.y === 1 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 2 && this.state.coordinate.y === 1 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 3 && this.state.coordinate.y === 1 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 3 && this.state.coordinate.y === 1 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 1 && this.state.coordinate.y === 2 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 1 && this.state.coordinate.y === 2 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 2 && this.state.coordinate.y === 2 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 2 && this.state.coordinate.y === 2 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 3 && this.state.coordinate.y === 2 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 3 && this.state.coordinate.y === 2 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 1 && this.state.coordinate.y === 3 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 1 && this.state.coordinate.y === 3 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 2 && this.state.coordinate.y === 3 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 2 && this.state.coordinate.y === 3 ? "B" : ""}</div>
+          <div className={ `${this.state.coordinate.x === 3 && this.state.coordinate.y === 3 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 3 && this.state.coordinate.y === 3 ? "B" : ""}</div>
         </div>
         <div className="info">
           <h3 id="message">{this.state.message}</h3>
