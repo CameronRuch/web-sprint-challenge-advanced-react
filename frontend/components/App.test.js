@@ -57,7 +57,7 @@ describe('Class App', () => {
     const submitBtn =  screen.getByTestId('submit')
     fireEvent.change(emailInput, { target: { value: 'foo@bar.baz'} })
     fireEvent.click(submitBtn)
-    await screen.findByText(/foo/i)
+    await screen.findAllByText(/foo/i)
   })
   
 
