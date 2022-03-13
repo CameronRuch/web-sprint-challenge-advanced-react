@@ -6,7 +6,7 @@ export default function AppFunctional(props) {
   // states
 
     const [coordinate, setCoordinate] = useState({ "x": 2, "y": 2 });
-    const [moves, setMoves] = useState(0);
+    const [steps, setSteps] = useState(0);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
@@ -15,7 +15,7 @@ export default function AppFunctional(props) {
 
   const leftClick = () => {
     if (coordinate.x > 1) {
-      setMoves(moves + 1)
+      setSteps(steps + 1)
       setCoordinate({
         ...coordinate, "x": coordinate.x - 1
       })
@@ -27,7 +27,7 @@ export default function AppFunctional(props) {
   
   const rightClick = () => {
     if (coordinate.x < 3) {
-      setMoves(moves + 1)
+      setSteps(steps + 1)
       setCoordinate({
         ...coordinate, "x": coordinate.x + 1
       })
@@ -39,7 +39,7 @@ export default function AppFunctional(props) {
 
   const upClick = () => {
     if (coordinate.y < 3) {
-      setMoves(moves + 1)
+      setSteps(steps + 1)
       setCoordinate({
         ...coordinate, "y": coordinate.y + 1
       })
@@ -51,7 +51,7 @@ export default function AppFunctional(props) {
 
   const downClick = () => {
     if (coordinate.y > 1) {
-      setMoves(moves + 1)
+      setSteps(steps + 1)
       setCoordinate({
         ...coordinate, "y": coordinate.y - 1
       })
@@ -62,10 +62,25 @@ export default function AppFunctional(props) {
   }
 
   const resetClick = () => {
-    setMoves(0)
+    setSteps(0)
     setCoordinate({ "x": 2, "y": 2 })
     setEmail('')
     setMessage('')
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const newPost = { "x": coordinate.x , "y": coordinate.y, "steps": steps, "email": email }
+    axios.post('http://localhost:9000/api/result', newPost)
+    .then( res => {
+      setMessage(res.data.message)
+    })
+    .catch(err => setMessage(err.response.data.message))
+  }
+
+  const onChange = (e) => {
+    const { value } = e.target
+    setEmail(value)
   }
 
 
@@ -75,7 +90,7 @@ export default function AppFunctional(props) {
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">{`Coordinates (${coordinate.x}, ${coordinate.y})`}</h3>
-        <h3 id="steps">You moved {moves} times</h3>
+        <h3 id="steps">You moved {steps} times</h3>
       </div>
       <div id="grid">
         <div className="square"></div>
@@ -98,8 +113,8 @@ export default function AppFunctional(props) {
         <button id="down" onClick={downClick}>DOWN</button>
         <button id="reset" onClick={resetClick}>reset</button>
       </div>
-      <form>
-        <input id="email" type="email" placeholder="type email"></input>
+      <form onSubmit={onSubmit}>
+        <input id="email" type="email" placeholder="type email" onChange={onChange} value={email}></input>
         <input id="submit" type="submit"></input>
       </form>
     </div>
