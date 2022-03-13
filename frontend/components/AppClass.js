@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 const initialState = {
-  coordinate: {'x': 2, 'y': 2},
+  coordinate: { 'x': 2, 'y': 2 },
   steps: 0,
   email: '',
   message: '',
@@ -62,6 +62,17 @@ export default class AppClass extends React.Component {
         message: "You can't go down" })
     }
   }
+
+  clickReset = () => {
+    this.setState({
+      ...this.state, 
+      coordinate: { 'x': 2, 'y': 2 },
+    steps: 0,
+    email: '', 
+    message: '',
+    })
+  }
+  
   
   render() {
     console.log(this.state);
@@ -91,7 +102,7 @@ export default class AppClass extends React.Component {
           <button id="up" onClick={this.upClick}>UP</button>
           <button id="right" onClick={this.rightClick}>RIGHT</button>
           <button id="down" onClick={this.downClick}>DOWN</button>
-          <button id="reset">reset</button>
+          <button id="reset" onClick={this.clickReset}>reset</button>
         </div>
         <form>
           <input id="email" type="email" placeholder="type email"></input>
