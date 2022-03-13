@@ -61,13 +61,20 @@ export default function AppFunctional(props) {
     }
   }
 
+  const resetClick = () => {
+    setMoves(0)
+    setCoordinate({ "x": 2, "y": 2 })
+    setEmail('')
+    setMessage('')
+  }
+
 
   return (
 
 
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Coordinates (2, 2)</h3>
+        <h3 id="coordinates">{`Coordinates (${coordinate.x}, ${coordinate.y})`}</h3>
         <h3 id="steps">You moved {moves} times</h3>
       </div>
       <div id="grid">
@@ -82,14 +89,14 @@ export default function AppFunctional(props) {
         <div className="square"></div>
       </div>
       <div className="info">
-        <h3 id="message"></h3>
+        <h3 id="message">{message}</h3>
       </div>
       <div id="keypad">
         <button id="left" onClick={leftClick}>LEFT</button>
         <button id="up" onClick={upClick}>UP</button>
         <button id="right" onClick={rightClick}>RIGHT</button>
         <button id="down" onClick={downClick}>DOWN</button>
-        <button id="reset">reset</button>
+        <button id="reset" onClick={resetClick}>reset</button>
       </div>
       <form>
         <input id="email" type="email" placeholder="type email"></input>
