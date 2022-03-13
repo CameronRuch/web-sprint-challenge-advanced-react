@@ -124,8 +124,8 @@ onSubmit = evt => {
           <button id="reset" onClick={this.clickReset}>reset</button>
         </div>
         <form onSubmit={this.onSubmit}>
-          <input id="email" type="email" placeholder="type email" onChange={this.onChange} value={this.state.email}></input>
-          <input id="submit" type="submit"></input>
+          <input  data-testid= "email" id="email" type="email" placeholder="type email" onChange={this.onChange} value={this.state.email}></input>
+          <input data-testid="submit" id="submit" type="submit"></input>
         </form>
       </div>
     )
