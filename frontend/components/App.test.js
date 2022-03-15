@@ -55,7 +55,7 @@ describe('Class App', () => {
   test('Type in email and updates value', async () => {
     const emailInput = screen.getByTestId("email")
     const submitBtn =  screen.getByTestId('submit')
-    fireEvent.change(emailInput, { target: { value: 'foo@bar.baz'} })
+    fireEvent.change(emailInput, { target: { value: 'foo@gmail.com'} })
     fireEvent.click(submitBtn)
     await screen.findAllByText(/foo/i)
   })
