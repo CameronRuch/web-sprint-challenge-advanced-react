@@ -114,7 +114,7 @@ onSubmit = evt => {
           <div className={ `${this.state.coordinate.x === 3 && this.state.coordinate.y === 3 ? 'square active' : 'square'}`}>{this.state.coordinate.x === 3 && this.state.coordinate.y === 3 ? "B" : ""}</div>
         </div>
         <div className="info">
-          <h3 id="message">{this.state.message}</h3>
+          <h3 data-testid="message" id="message">{this.state.message}</h3>
         </div>
         <div id="keypad">
           <button id="left" onClick={this.leftClick}>LEFT</button>
@@ -124,8 +124,24 @@ onSubmit = evt => {
           <button id="reset" onClick={this.clickReset}>reset</button>
         </div>
         <form onSubmit={this.onSubmit}>
-          <input  data-testid= "email" id="email" type="email" placeholder="type email" onChange={this.onChange} value={this.state.email}></input>
-          <input data-testid="submit" id="submit" type="submit"></input>
+
+          <input  
+          data-testid= "email" 
+          id="email" 
+          type="email" 
+          placeholder="type email" 
+          onChange={this.onChange} 
+          value={this.state.email}
+          >
+          </input>
+
+          <input 
+          data-testid="submit" 
+          id="submit" 
+          type="submit"
+          >
+          </input>
+
         </form>
       </div>
     )

@@ -52,12 +52,14 @@ describe('Class App', () => {
     expect(functionalBtn).toBeVisible()
     expect(functionalBtn).toBeInTheDocument()
   })
-  test('Type in email and updates value', async () => {
+  test('Type in email and updates value',  () => {
     const emailInput = screen.getByTestId("email")
     const submitBtn =  screen.getByTestId('submit')
     fireEvent.change(emailInput, { target: { value: 'foo@gmail.com'} })
     fireEvent.click(submitBtn)
-    await screen.findAllByText(/foo/i)
+    const mes = screen.getByTestId("message")
+    expect(mes).toBeVisible();
+
   })
   
 
